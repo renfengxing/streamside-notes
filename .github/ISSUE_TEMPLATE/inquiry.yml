@@ -1,31 +1,35 @@
 {
-  "name": "Request a printable handout quote",
-  "description": "Public, non-sensitive inquiry for the USD19 trial service; not an order.",
+  "name": "Request a CSV repair quote",
+  "description": "Draft public non-sensitive summary only; quote after redacted sample review, not an order.",
   "title": "[Inquiry] ",
   "body": [
     {
       "type": "markdown",
       "attributes": {
-        "value": "All fields and this issue are public. Do not post personal details, email addresses, private client files, payment information, or credentials. Share only a non-sensitive summary and optional public material links. USD19 is a variable trial quote for one printable checklist page, one original SVG, editable HTML, and one revision. AI-assisted editing/design; no professional safety judgment or guaranteed commercial results. We must confirm scope, quote, and delivery timing first. Submitting is not an order or payment. There is no instant checkout, and no service is promised before payment is accepted. See https://streamside-notes.sandybloom18.chatgpt.site."
+        "value": "All fields and this issue are public. Do not post personal details, email addresses, private client files, payment information, or credentials. Share only a non-sensitive summary. Quote after reviewing a redacted sample and expected output through an agreed private channel. Local delivery only: repaired CSV, reusable Python standard-library CLI and JSON exception report. AI-assisted; no professional safety judgment or guaranteed commercial results. Confirm scope, quote and delivery timing first. Submitting is not an order or payment; no service is promised before payment is accepted under an explicitly agreed arrangement. No verified online payment integration, customers or income. This local draft does not establish publication or inquiry availability. See https://streamside-notes.sandybloom18.chatgpt.site. Do not upload customer files or link private files. Source account: renfengxing. Reference availability is not verified."
       }
     },
     {
       "type": "textarea",
       "id": "overview",
       "attributes": {
-        "label": "Non-sensitive project overview",
-        "description": "Briefly describe your English outdoor instructions, intended audience, and desired checklist purpose. Do not include personal details or private text."
+        "label": "CSV fault and expected result (non-sensitive summary only)",
+        "description": "Describe duplicate rows, surrounding field whitespace, or column mismatch and the expected result in general terms only. Do not paste rows, upload customer files, or include personal or payment information."
       },
-      "validations": {"required": true}
+      "validations": {
+        "required": true
+      }
     },
     {
       "type": "textarea",
-      "id": "style",
+      "id": "constraints",
       "attributes": {
-        "label": "Preferred style and optional public materials",
-        "description": "Describe the visual style you want. Optionally link to English source material or brand assets already cleared for public sharing. Do not link private access URLs. No uploads or links are needed to start an inquiry."
+        "label": "Format and scope constraints (non-sensitive summary only)",
+        "description": "Describe approximate file counts, column structure and timing needs without names, actual rows, private links or attachments. Redacted samples and expected output require an agreed private channel before scope, quote and delivery timing are confirmed."
       },
-      "validations": {"required": false}
+      "validations": {
+        "required": false
+      }
     },
     {
       "type": "checkboxes",
@@ -33,9 +37,18 @@
       "attributes": {
         "label": "Public inquiry confirmations",
         "options": [
-          {"label": "I understand all fields are public and will not post personal, private, payment, or credential information.", "required": true},
-          {"label": "I will provide English material I have rights to use and confirm its accuracy before work begins.", "required": true},
-          {"label": "I understand this is an AI-assisted service inquiry, not an order or payment; scope, quote, and delivery timing require confirmation.", "required": true}
+          {
+            "label": "I understand all fields are public and will not post personal, private, payment, or credential information.",
+            "required": true
+          },
+          {
+            "label": "I will provide only redacted CSV samples I have rights to use through an agreed private channel and confirm their accuracy before work begins.",
+            "required": true
+          },
+          {
+            "label": "I understand this is an AI-assisted service inquiry, not an order or payment; scope, quote, and delivery timing require confirmation.",
+            "required": true
+          }
         ]
       }
     }

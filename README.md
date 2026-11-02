@@ -1,43 +1,87 @@
-# Streamside Notes
+# Streamside Notes — local CSV repair
 
-Turn your own English outdoor instructions into a clear, branded printable handout.
-See the [Streamside Notes site and samples](https://streamside-notes.sandybloom18.chatgpt.site).
+Quote after reviewing a redacted sample and expected output. Local delivery only.
+The offer is repaired CSV output, a reusable Python standard-library CLI and a
+JSON exception report. Confirm scope, quote and delivery timing before work begins.
+UTF-8 (BOM allowed), commas and identical ordered headers are required. Exact
+processed-row deduplication preserves first occurrence. Trimming is explicit;
+no fuzzy matching, automatic columns or blank filling. Invalid files are rejected
+without partial success, and existing files are never overwritten.
 
-## Introductory quote — USD19
+AI-assisted work; customers confirm rights and accuracy. No commercial results
+are guaranteed. No verified online payment integration, customers, orders or income.
+Solana native USDC is a proposal awaiting actual integration verification.
+No service is promised before payment is accepted under an explicitly agreed
+arrangement; no existing online checkout or receipt is claimed. Do not send money
+or payment information through public issues.
 
-USD19 is an introductory quote, subject to confirmation for your specific scope.
-The proposed package is one printable checklist page, one original SVG illustration,
-editable HTML, and one revision within the agreed scope. Extra pages, research,
-translation, new safety instructions, and ongoing updates are outside this package.
-We use AI-assisted editing and design with your confirmation of the final wording and diagram. This is a formatting and
-editing service, not professional safety advice or a safety assessment. You must
-provide English material you have permission to use and confirm its accuracy.
-No commercial results are guaranteed.
+## Sample review and privacy
 
-## Ask for a quote
+The intended [public inquiry form](https://github.com/renfengxing/streamside-notes/issues/new/choose)
+is a draft local entry; its availability is not verified. Every issue is public.
+Share only a non-sensitive summary, never personal details, credentials or private
+CSV data. Do not upload customer files or link private files. Agree a private channel before providing redacted samples and expected
+output. An inquiry is not an order or payment. No external publication is performed.
+GitHub is source/sample display, not evidence of customer acquisition.
 
-Use the [public inquiry form](https://github.com/carter624/streamside-notes/issues/new/choose).
-Every field and issue is public. Share only a non-sensitive summary, preferred
-style, and optional links to materials already suitable for public sharing.
-Do not post personal details, email addresses, private client material, payment
-information, or credentials. You can start with a general summary without files.
+## Synthetic CSV before and after
 
-An inquiry is not an order or payment. We first confirm scope, quote, and delivery
-timing. There is no instant payment or checkout here. No service is promised before
-payment is accepted; the owner will arrange payment through a lawful existing
-channel only after a real order is agreed. Do not send payment details through Issues.
+Duplicate rows, surrounding field whitespace and inconsistent columns can cause
+repeated manual cleanup. This synthetic example is not customer work.
+With explicit `--trim-fields`, merge these inputs (the second permits a UTF-8 BOM):
 
-## Usable samples and license
+synthetic-a.csv:
+```csv
+id,name
+1," Ada "
+2,Bob
+```
 
-Open the [printable checklist](samples/outing-checklist.html),
-[original SVG](assets/outing-plan.svg), and [service details](service.html).
-These are self-authored demonstration materials, not customer commissions.
-Download the repository ZIP, extract it, and open `index.html` or
-`samples/outing-checklist.html` in your browser. Keep `articles/`, `assets/`,
-`samples/` and `style.css` together. Print the sample on A4 or Letter at 100%
-with browser headers and footers off. HTML and SVG remain editable offline.
+synthetic-b.csv:
+```csv
+id,name
+1,Ada
+3,
+```
 
-The project's original HTML/SVG samples are available under the [MIT license](LICENSE).
-Keep the copyright and permission notice when reusing them. The license does not
-cover customer-provided or third-party material; those rights remain with their
-respective holders. Samples illustrate layout, not professional safety guidance.
+Expected output:
+```csv
+id,name
+1,Ada
+2,Bob
+3,
+```
+
+The JSON report records 4 input records, 3 output records and 1 duplicate,
+with source locations. Empty values remain empty. A mismatched header or a row
+such as `4` under `id,name` produces an explicit error report and no repaired
+output. No input file is overwritten. The local source CLI `csv_repair.py --demo`
+generates synthetic inputs, expected/actual output and success/error reports in
+a new directory; this display is not a claim that the public bundle includes the CLI.
+
+## Original outdoor samples
+
+The [site reference](https://streamside-notes.sandybloom18.chatgpt.site) is not
+verified here. Local [service details](service.html), [printable checklist](samples/outing-checklist.html)
+and [original SVG](assets/outing-plan.svg) remain original demonstrations,
+not customer work or professional safety advice. The outdoor sample uses editable HTML
+and one revision is an example of the former layout scope, not the CSV offer.
+Keep articles, assets, samples and style.css together when previewing offline.
+
+The [MIT license](LICENSE) covers original project samples; customer-provided or
+third-party material retains its own rights. Source account: renfengxing.
+
+## Channel rules — pending owner review
+
+Promotion budget: zero. No Connects purchase, registration, paid promotion or
+new paid service. External publication requires explicit owner authorization.
+Before any proposed post on GitHub, Upwork or another channel, record the exact
+channel, current official rule URLs, review date and reviewer, and verify rules
+for AI-assisted content, automation/bots, self-promotion, links and commercial
+services, plus required disclosures and listing fields. Current rules and channel
+approval have not been verified. If any applicable rule remains unverified, do
+not publish. Authorization alone does not establish platform permission.
+Never enter channels that prohibit AI or bots. No unsolicited bulk direct messages
+or bulk email. Do not claim approved listings, reach, leads, sales or income.
+GitHub source/sample display is not customer acquisition. This is a draft only;
+no publication, account action or outreach is performed by this task.
