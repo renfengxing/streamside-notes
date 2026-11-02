@@ -1,0 +1,43 @@
+{
+  "name": "Request a printable handout quote",
+  "description": "Public, non-sensitive inquiry for the USD19 trial service; not an order.",
+  "title": "[Inquiry] ",
+  "body": [
+    {
+      "type": "markdown",
+      "attributes": {
+        "value": "All fields and this issue are public. Do not post personal details, email addresses, private client files, payment information, or credentials. Share only a non-sensitive summary and optional public material links. USD19 is a variable trial quote for one printable checklist page, one original SVG, editable HTML, and one revision. AI-assisted editing/design; no professional safety judgment or guaranteed commercial results. We must confirm scope, quote, and delivery timing first. Submitting is not an order or payment. There is no instant checkout, and no service is promised before payment is accepted. See https://streamside-notes.sandybloom18.chatgpt.site."
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "overview",
+      "attributes": {
+        "label": "Non-sensitive project overview",
+        "description": "Briefly describe your English outdoor instructions, intended audience, and desired checklist purpose. Do not include personal details or private text."
+      },
+      "validations": {"required": true}
+    },
+    {
+      "type": "textarea",
+      "id": "style",
+      "attributes": {
+        "label": "Preferred style and optional public materials",
+        "description": "Describe the visual style you want. Optionally link to English source material or brand assets already cleared for public sharing. Do not link private access URLs. No uploads or links are needed to start an inquiry."
+      },
+      "validations": {"required": false}
+    },
+    {
+      "type": "checkboxes",
+      "id": "confirmations",
+      "attributes": {
+        "label": "Public inquiry confirmations",
+        "options": [
+          {"label": "I understand all fields are public and will not post personal, private, payment, or credential information.", "required": true},
+          {"label": "I will provide English material I have rights to use and confirm its accuracy before work begins.", "required": true},
+          {"label": "I understand this is an AI-assisted service inquiry, not an order or payment; scope, quote, and delivery timing require confirmation.", "required": true}
+        ]
+      }
+    }
+  ]
+}
