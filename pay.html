@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Quote payment request — Streamside Notes</title>
+<link rel="stylesheet" href="style.css"><main><h1>Quote payment request</h1>
+<p>AI-assisted CSV repair. Check this request against the operator's privately agreed quote. Static parameters cannot prove quote acceptance or payment. Demand, first sale and real mainnet receipts remain unverified. The operator can manually verify a signature using the local read-only CLI; no actual mainnet receipt is evidenced.</p>
+<p>You confirm in your own wallet. This page does not connect a wallet, create or sign transactions. Network: Solana mainnet-beta; native USDC only.</p>
+<pre id="details"></pre><p id="status">Payment disabled: no confirmed request.</p><a id="payment" aria-disabled="true">Open request in your wallet</a><p><a href="service.html">Service details</a></p></main>
+<script>
+'use strict';
+(() => {
+const recipient='AUFXqDk3wJ3VTWzoEAng3V4Fcy8yQarUaFzQW3bxgTsS', mint='EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v';
+const keys=['v','order','quote','accepted','amount','reference','created','expires','network','mint','recipient','demo'];
+const link=document.getElementById('payment'), status=document.getElementById('status'), details=document.getElementById('details');
+function disable(message){link.removeAttribute('href');link.setAttribute('aria-disabled','true');status.textContent=message;}
+function validate(search, now){
+ if(search.length>3000 || /%(?![0-9a-f]{2})/i.test(search)) throw Error('Invalid encoding');
+ const entries=[...new URLSearchParams(search)]; const p=Object.fromEntries(entries);
+ if(entries.length!==keys.length || Object.keys(p).length!==keys.length || keys.some(k=>!Object.hasOwn(p,k))) throw Error('Missing, duplicate or unknown parameters');
+ if(p.v!=='1'||p.network!=='mainnet-beta'||p.recipient!==recipient||p.mint!==mint) throw Error('Fixed payment values changed');
+ if(!/^[a-f0-9]{32}$/.test(p.order)||! /^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$/.test(p.quote)||p.accepted!=='yes'||!['yes','no'].includes(p.demo)) throw Error('Invalid quote confirmation');
+ if(!/^(0|[1-9][0-9]{0,14})(\.[0-9]{1,6})?$/.test(p.amount)) throw Error('Invalid decimal amount');
+ const [whole,fraction='']=p.amount.split('.'); const units=BigInt(whole)*1000000n+BigInt((fraction+'000000').slice(0,6));
+ if(units<=0n || units>18446744073709551615n) throw Error('Amount outside u64');
+ const alphabet='123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+ if(!/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(p.reference)) throw Error('Invalid reference');
+ let n=0n; for(const c of p.reference)n=n*58n+BigInt(alphabet.indexOf(c));
+ let bytes=0;for(let v=n;v>0n;v>>=8n)bytes++;
+ if(bytes+(p.reference.match(/^1*/)[0].length)!==32) throw Error('Reference length');
+ function time(s){if(!/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$/.test(s))throw Error('Invalid UTC time'); const t=Date.parse(s);if(!Number.isFinite(t)||new Date(t).toISOString()!==s.replace('Z','.000Z'))throw Error('Invalid calendar time');return t;}
+ const created=time(p.created),expires=time(p.expires);
+ if(created>now||expires<=created||expires-created>604800000||expires<=now) throw Error('Invalid or expired request');
+ return p;
+}
+function render(){
+ disable('Payment disabled');
+ try{
+ if(location.hash)throw Error('Unexpected fragment');
+ const p=validate(location.search,Date.now());
+ details.textContent=keys.map(k=>k+': '+p[k]).join('\n')+'\nCurrency: USDC';
+ if(p.demo==='yes'){disable('Synthetic demo — actual payment disabled');return;}
+ const q=new URLSearchParams({amount:p.amount,'spl-token':mint,reference:p.reference});
+ link.setAttribute('href','solana:'+recipient+'?'+q.toString());link.setAttribute('aria-disabled','false');status.textContent='Request only. Verify the quote with the operator before confirming in your wallet.';
+ }catch(error){details.textContent='';disable('Payment disabled: '+error.message);}
+}
+render();setInterval(render,1000);
+})();
+</script></html>

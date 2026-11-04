@@ -1,6 +1,4 @@
-# Local CSV repair and merge
-
-Local delivery only. Quote after reviewing a redacted sample and expected output; agree a fixed quote, scope and delivery timing before work begins. An inquiry is not an order. The three deliveries are repaired CSV result files, a reusable Python standard-library CLI (`csv_repair.py`), and a JSON exception report. This is a service hypothesis: no verified customers, online checkout or income. Solana native USDC is only a proposal awaiting integration verification, not an available payment method.
+# CSV_USAGE — reproducible standard-library CLI
 
 ## Run the synthetic demonstration offline
 
@@ -34,8 +32,3 @@ Existing inputs and targets are never overwritten. Output and report must be dis
 
 AI-assisted work requires customer confirmation of rights, accurate input interpretation, expected changes, scope and final results. Review a redacted sample and expected output before a fixed quote. Never post customer original data, confidential data or personal or payment information in public issues. Agree a private transfer method before sharing even redacted samples; none is provided by this local version. No secure storage, retention period or delivery interval is promised. Inspect the script and run locally with synthetic data first.
 
-## Historical original demonstrations
-
-Open `site/index.html` offline. The original outdoor articles, cited sources, original SVG diagrams and printable `site/samples/outing-checklist.html` remain historical original demonstrations, not customer cases or CSV delivery evidence. Keep the HTML, `site/style.css` and `site/assets/` together for offline use and browser printing.
-
-[renfengxing source reference](https://github.com/renfengxing/streamside-notes) is an unverified display reference, not a verified live service entry or acquisition evidence. No publication, account access, external sending or transaction is performed here. See `operations/handoff.md` for the fixed checks.

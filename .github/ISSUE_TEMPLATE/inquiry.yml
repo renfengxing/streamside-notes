@@ -1,12 +1,12 @@
 {
   "name": "Request a CSV repair quote",
-  "description": "Draft public non-sensitive summary only; quote after redacted sample review, not an order.",
+  "description": "Public non-sensitive summary only; quote after redacted sample review, not an order.",
   "title": "[Inquiry] ",
   "body": [
     {
       "type": "markdown",
       "attributes": {
-        "value": "All fields and this issue are public. Do not post personal details, email addresses, private client files, payment information, or credentials. Share only a non-sensitive summary. Quote after reviewing a redacted sample and expected output through an agreed private channel. Local delivery only: repaired CSV, reusable Python standard-library CLI and JSON exception report. AI-assisted; no professional safety judgment or guaranteed commercial results. Confirm scope, quote and delivery timing first. Submitting is not an order or payment; no service is promised before payment is accepted under an explicitly agreed arrangement. No verified online payment integration, customers or income. This local draft does not establish publication or inquiry availability. See https://streamside-notes.sandybloom18.chatgpt.site. Do not upload customer files or link private files. Source account: renfengxing. Reference availability is not verified."
+        "value": "All fields and this issue are public. Do not post personal details, email addresses, private client files, payment information, or credentials. Share only a non-sensitive summary. Quote after reviewing a redacted sample and expected output through an agreed private channel. Local delivery only: repaired CSV, reusable Python standard-library CLI and JSON exception report. AI-assisted; no professional safety judgment or guaranteed commercial results. Confirm scope, quote and delivery timing first. Submitting is not an order or payment; no service is promised before payment is accepted under an explicitly agreed arrangement. No verified online payment integration, customers or income. See https://streamside-notes.sandybloom18.chatgpt.site. Do not upload customer files or link private files. Source account: renfengxing. Existing renfengxing source is public. No real mainnet receipt is evidenced."
       }
     },
     {
